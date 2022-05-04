@@ -12,11 +12,11 @@ puts "----------"
 # Your code goes here ...
 
 
-print "Enter a store name \n"
+print "Enter a store name \n> "
 
 store_name = gets.chomp
 
-@new_store = Store.create(name: store_name, annual_revenue: 3, mens_apparel: false, womens_apparel: false)
+@new_store = Store.create(name: store_name)
 
 
 @new_store.errors.each{
