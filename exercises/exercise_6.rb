@@ -20,7 +20,7 @@ puts "----------"
 ])
 
 @store2.employees.create([
-  {first_name: "Tina", last_name: "Fey", hourly_rate: 50},
+  {first_name: "Tina", last_name: "Fey", hourly_rate: 30},
   {first_name: "James", last_name: "Dean", hourly_rate: 40},
   {first_name: "Lisa", last_name: "Bob", hourly_rate: 90},
 ])
