@@ -14,13 +14,17 @@ Store.create([
   {name: "Yaletown", annual_revenue: 430000, mens_apparel: true, womens_apparel: true}
 ])
 
-# # select name from store where mens_apparel = true
-# @mens_stores = Store.where(:mens_apparel => true).pluck(:name, :annual_revenue)
+# select from store where mens_apparel = true
+@mens_stores = Store.where(:mens_apparel => true)
 
-# puts @mens_stores
+# loop through each store, display name & revenue
+@mens_stores.select {
+  |store| puts "#{store.name}, #{store.annual_revenue}"
+}
 
-# # @womens_stores = Store.where(:womens_apparel => true, :annual_revenue < 1000000000).(:name, :annual_revenue)
+# select stores where womens_apparel true and annual rev < 1000000000
+@womens_stores = Store.where("womens_apparel = true and annual_revenue < 1000000000")
 
-# @womens_stores = Store.where(["womens_apparel = true and annual_revenue < 1000000000"]).pluck(:name, :annual_revenue)
-
-# puts @womens_stores
+@womens_stores.select {
+  |store| puts "#{store.name}, #{store.annual_revenue}"
+}
