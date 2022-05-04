@@ -22,8 +22,8 @@ Store.create([
   |store| puts "#{store.name}, #{store.annual_revenue}"
 }
 
-# select stores where womens_apparel true and annual rev < 1000000000
-@womens_stores = Store.where("womens_apparel = true and annual_revenue < 1000000000")
+# select stores where womens_apparel true and annual rev < 1000000
+@womens_stores = Store.where("womens_apparel = true and annual_revenue < 1000000")
 
 @womens_stores.select {
   |store| puts "#{store.name}, #{store.annual_revenue}"
