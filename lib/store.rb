@@ -17,7 +17,7 @@ class Store < ActiveRecord::Base
 
   def apparel_check
     if !self.womens_apparel and !self.mens_apparel
-      errors.add(:apparel, "must sell at least men's or women's apparel")
+      errors.add(:store, "must sell at least men's or women's apparel")
     end
   end
 
