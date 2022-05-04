@@ -45,11 +45,44 @@ class Employee < ActiveRecord::Base
 
   # Display error message if there is any
   def display_error
-    puts "error: #{self.errors.messages}"
+    unless self.errors.full_messages.empty?
+      puts "error: #{self.errors.full_messages}"
+    end
   end
 
 end
 
-@store1.employees.create(first_name: "Jack", last_name: "Ray", hourly_rate: 50)
 
-Employee.create(first_name: "Jack", last_name: "Ray", hourly_rate: 50)
+class Store < ActiveRecord::Base
+  validate :name_check, :revenue_check, :apparel_check, :display_error
+
+  def name_check
+    if self.name.length < 3
+      self.errors.add(:name, "length must be greater than 3 characters")
+    end
+  end
+
+  def revenue_check
+    unless self.annual_revenue >= 0
+      self.errors.add(:annual_revenue, "must be greater than zero")
+    end
+  end
+
+  def apparel_check
+    unless [TrueClass, FalseClass].include? self.mens_apparel
+      self.errors.add(:mens_apparel, "must be a valid boolean")
+    end
+
+    unless [TrueClass, FalseClass].include? self.womens_apparel
+      self.errors.add(:womens_apparel, "must be a valid boolean")
+    end
+  end
+
+  # Display error message if there is any
+  def display_error
+    unless self.errors.full_messages.empty?
+      puts "error: #{self.errors.full_messages}"
+    end
+  end
+
+end
